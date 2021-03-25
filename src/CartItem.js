@@ -12,7 +12,7 @@ class CartItem extends React.Component {
         // this.increaseQuantity = this.increaseQuantity.bind(this);   
         //instead this use arrow functions as they automatically bind state
 
-        this.testing();
+        //this.testing();
     }
 
     
@@ -39,7 +39,7 @@ class CartItem extends React.Component {
     //         console.log('state', this.state);
     //     });
     // }
-    
+
     increaseQuantity = () => {
         
         //console.log('this.state', this.state);
@@ -132,7 +132,7 @@ class CartItem extends React.Component {
         });
     }
     render() {
-        console.log('render');
+        //console.log('render');
         const {price, title, qty} = this.state; 
         return (
             <div className="cart-item">
