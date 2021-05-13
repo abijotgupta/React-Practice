@@ -7,21 +7,21 @@ class Cart extends React.Component {
         this.state = {
             products: [
                 {
-                    price: 99,
+                    price: 999,
                     title: 'Watch',
                     qty: 1,
                     img: ' ',
                     id: 1
                 },
                 {
-                    price: 999,
+                    price: 9999,
                     title: 'Mobile Phone',
                     qty: 10,
                     img: ' ',
                     id: 2
                 },
                 {
-                    price: 9999,
+                    price: 99999,
                     title: 'Laptop',
                     qty: 4,
                     img: ' ',
@@ -45,10 +45,10 @@ class Cart extends React.Component {
                     <CartItem 
                         product = {product} 
                         key = {product.id}
-                        func={() => console.log('Abijot Gupta')}
-                        isLoggedIn = {false}
-                        jsx = {<h1>Cart</h1>}
-                        comp = {<CartItem />}
+                        // func={() => console.log('Abijot Gupta')}
+                        // isLoggedIn = {false}
+                        // jsx = {<h1>Cart</h1>}
+                        // comp = {<CartItem />}
                     />
                 ) 
             })}

@@ -133,10 +133,11 @@ class CartItem extends React.Component {
     }
     render() {
         //console.log('render');
-        console.log('this.props', this.props);
+        //console.log('this.props', this.props);
         const {price, title, qty} = this.props.product; 
         return (
             <div className="cart-item">
+                {/* {this.props.jsx} */}
                 <div className="left-block">
                     <img style= {styles.image} />
                 </div>
@@ -149,19 +150,19 @@ class CartItem extends React.Component {
                         <img 
                             alt="increase" 
                             className="action-icons" 
-                            src="https://www.flaticon.com/svg/vstatic/svg/992/992651.svg?token=exp=1616648553~hmac=4587316fbd97170d0c651e55d06f9167" 
+                            src="https://www.flaticon.com/svg/vstatic/svg/992/992651.svg?token=exp=1620893019~hmac=c5fdea1b0042ca1445c07560866e46f9" 
                             onClick={this.increaseQuantity}
                         />
                         <img 
                             alt="decrease" 
                             className="action-icons" 
-                            src="https://www.flaticon.com/svg/vstatic/svg/1828/1828906.svg?token=exp=1616648589~hmac=50bae13d37154716795ae4d693d81101" 
+                            src="https://www.flaticon.com/svg/vstatic/svg/992/992683.svg?token=exp=1620893058~hmac=0406e5f6a683e780063b76efd6acf73f" 
                             onClick={this.decreaseQuantity}   
                         /> 
                         <img 
                             alt="delete" 
                             className="action-icons" 
-                            src="https://www.flaticon.com/svg/vstatic/svg/1214/1214428.svg?token=exp=1616648620~hmac=9029762d62fbaa53f651a91e89e92bea" 
+                            src="https://www.flaticon.com/svg/vstatic/svg/1214/1214428.svg?token=exp=1620893090~hmac=4de5cb7a097a07020c1976ee0e74ddce" 
                             onClick
                         />
                     </div>
