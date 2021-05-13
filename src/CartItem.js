@@ -1,145 +1,21 @@
 import React from 'react';
 
 class CartItem extends React.Component {
-    // constructor() {
-    //     super();
-    //     this.state = {
-    //         price: 999,
-    //         title: 'Mobile Phone',
-    //         qty: 1,
-    //         img: ' '
-    //     }
-    //     // this.increaseQuantity = this.increaseQuantity.bind(this);   
-    //     //instead this use arrow functions as they automatically bind state
-
-    //     //this.testing();
-    // }
-
-    
-    
-    // In case of AJAX call or in case of promise React donot perform batching
-    // Also in that case setState call is Synchronous
-    // testing() {
-    //     const promise = new Promise((resolve, reject) => {
-    //         setTimeout(() => {
-    //             resolve('done')
-    //         }, 5000);
-    //     })
-
-    //     promise.then(() => {
-    //         //In case of setState setState call is Synchronous
-    //         //this.setState({ qty: this.state.qty + 10});
-
-
-    //         //Here in case of promise our Component is re-rendered 3 times
-    //         this.setState({ qty: this.state.qty + 10});
-    //         this.setState({ qty: this.state.qty + 10});
-    //         this.setState({ qty: this.state.qty + 10});
-
-    //         console.log('state', this.state);
-    //     });
-    // }
-
-    increaseQuantity = () => {
-        
-        //console.log('this.state', this.state);
-        //setState form 1
-        //this state do shallow merging.......which means if I change only qty then only qty will change
-        // this.setState({
-        //     qty: this.state.qty + 1
-        // }); 
-
-
-        //Even though I'm rendering 3 times, but React only renders it for single time. 
-        //This is because of the concept of batching.
-        //By batching I mean the event handler batch all the setStates as a single unit.
-        //Therefore these 3 setState calls merge into one batch i.e, one setState.
-
-        //In short, React will take only last call setState object. 
-        // this.setState({
-        //     qty: this.state.qty + 5
-        // }); 
-
-        // this.setState({
-        //     qty: this.state.qty + 6
-        // }); 
-
-        // this.setState({
-        //     qty: this.state.qty + 1
-        // }); 
-
-
-        //setState form 2
-        //This also do shallow merging
-        // this.setState((prevState) => {
-        //     return {
-        //         qty: prevState.qty + 1
-        //     }
-        // });
-
-
-        //Here our quantity increases by 3 but React only render once i.e, here also React performing batching
-        //Check inside render func console.log('render') in console
-
-        //This 2nd form basically uses Queue and pass the setState callback to it
-        //Since here we have access to prevState so react ensure that prevState value should be updated
-        // this.setState((prevState) => {
-        //     return {
-        //         qty: prevState.qty + 1
-        //     }
-        // });
-
-          // this.setState((prevState) => {
-        //     return {
-        //         qty: prevState.qty + 1
-        //     }
-        // });
-        // this.setState((prevState) => {
-        //     return {
-        //         qty: prevState.qty + 1
-        //     }
-        // });
-
-        //setState call is basically Asynchronous call
-        //therefore we donot know when it will be finished
-        // this.setState((prevState) => {
-        //     return {
-        //         qty: prevState.qty + 1
-        //     }
-        // });
-        // console.log(this.state);
-
-        //this setState contains 2 callback
-        //here the 2nd callback will be called whenever 1st callback will be finished
-        //this 2nd callback we can pass in the first state also
-        this.setState((prevState) => {
-            return {
-                qty: prevState.qty + 1
-            }
-        }, () => {
-            console.log(this.state);
-        });
-    }
-    decreaseQuantity = () => {
-        const {qty} = this.state;
-        if(qty === 0) {
-            return;
-        }
-        this.setState((prevState) => {
-            return {
-                qty: prevState.qty - 1
-            }
-        });
-    }
     render() {
-        //console.log('render');
-        //console.log('this.props', this.props);
+        console.log('this.props', this.props);
         const {price, title, qty} = this.props.product; 
+        const {
+            product, 
+            onIncreaseQty, 
+            onDecreaseQty, 
+            onDeleteProduct
+        } = this.props; 
+        
         return (
             <div className="cart-item">
-                {/* {this.props.jsx} */}
+                {this.props.jsx}
                 <div className="left-block">
-                    <img style= {styles.image} />
+                    <img style= {styles.image}  />
                 </div>
                 <div className="right-block">
                     <div style={ { fontSize: 25 } }>{title}</div>
@@ -151,19 +27,19 @@ class CartItem extends React.Component {
                             alt="increase" 
                             className="action-icons" 
                             src="https://www.flaticon.com/svg/vstatic/svg/992/992651.svg?token=exp=1620893019~hmac=c5fdea1b0042ca1445c07560866e46f9" 
-                            onClick={this.increaseQuantity}
+                            onClick={() => onIncreaseQty(product)}
                         />
                         <img 
                             alt="decrease" 
                             className="action-icons" 
                             src="https://www.flaticon.com/svg/vstatic/svg/992/992683.svg?token=exp=1620893058~hmac=0406e5f6a683e780063b76efd6acf73f" 
-                            onClick={this.decreaseQuantity}   
+                            onClick={() => onDecreaseQty(product)}  
                         /> 
                         <img 
                             alt="delete" 
                             className="action-icons" 
                             src="https://www.flaticon.com/svg/vstatic/svg/1214/1214428.svg?token=exp=1620893090~hmac=4de5cb7a097a07020c1976ee0e74ddce" 
-                            onClick
+                            onClick = { ()=> onDeleteProduct(product.id) }
                         />
                     </div>
                 </div>
